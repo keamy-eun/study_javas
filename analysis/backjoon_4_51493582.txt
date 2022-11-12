@@ -1,0 +1,86 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+/* 
+        1) 문제파악 
+        총 N개의 정수가 주어졌을 때, 정수 v가 몇 개인지 구하는 프로그램을 작성하시오.
+        입력
+        첫째 줄에 정수의 개수 N(1 ≤ N ≤ 100)이 주어진다. 둘째 줄에는 정수가 공백으로 구분되어져있다. 
+        셋째 줄에는 찾으려고 하는 정수 v가 주어진다. 입력으로 주어지는 정수와 v는 -100보다 크거나 같으며, 100보다 작거나 같다.
+        출력
+        첫째 줄에 입력으로 주어진 N개의 정수 중에 v가 몇 개인지 출력한다.
+
+        2) 유추파악
+        1. 정수 N 입력 
+        2. 공백으로 구분된 N개의 정수들 입력
+        3. 찾을 정수 v 입력
+        4. N개 중 v의 갯수 출력
+
+        3) 주요 단어 이름 선정
+        입력: input_N, input_v  /  v개수: cnt
+
+        4)테스트 케이스
+        11
+        1 4 1 2 4 2 4 2 3 4 4
+        2
+        --> 3
+        11
+        1 4 1 2 4 2 4 2 3 4 4
+        5
+        --> 0
+
+        5)프로그래밍 순서
+        N입력 - N개 정수 입력 - Arraylist에 저장(공백구분) - v입력 - Arraylist와 비교 찾기(for문)
+        */
+
+public class Main {
+
+    public static void main(String[] args) {
+        //버퍼드 사용
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        try {
+            // N입력
+            int input_N = Integer.parseInt(br.readLine());
+            //N개 정수 입력 -  Arraylist에 저장(공백구분)
+            ArrayList<String> arrayList = new ArrayList<>();
+            String a = br.readLine();
+            // " "로 구분할수 있는 문장 만들어야함
+                StringTokenizer st = new StringTokenizer(a);
+                while(st.hasMoreTokens()){
+                    arrayList.add(st.nextToken());
+                }
+            //v입력
+            int input_v = Integer.parseInt(br.readLine());
+            //Arraylist와 비교 찾기 (for문)- 
+            int cnt = 0;
+            for(int i=0; i<input_N; i++){
+                if(Integer.parseInt(arrayList.get(i))==input_v) cnt++;
+            }
+            bw.write(cnt+"\n");
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+    }
+}
+
+/*      <Scanner사용 풀이>
+        Scanner sc = new Scanner(System.in);
+        int N = Integer.parseInt(sc.next());
+        ArrayList<String> arraylist = new ArrayList<>();
+        for(int i =0; i<N; i++){
+            arraylist.add(sc.next());
+        }         
+        int v = sc.nextInt();
+        int cnt = 0;
+        for(int i=0; i<N; i++){
+            if(Integer.parseInt(arraylist.get(i)) == v) cnt ++;
+        }
+        System.out.println(cnt); */

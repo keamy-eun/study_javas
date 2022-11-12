@@ -1,0 +1,83 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+/* 
+        1) 문제파악 
+        X대학 M교수님은 프로그래밍 수업을 맡고 있다. 교실엔 학생이 30명이 있는데, 학생 명부엔 각 학생별로 1번부터 30번까지 출석번호가 붙어 있다.
+        교수님이 내준 특별과제를 28명이 제출했는데, 그 중에서 제출 안 한 학생 2명의 출석번호를 구하는 프로그램을 작성하시오.
+        입력
+        입력은 총 28줄로 각 제출자(학생)의 출석번호 n(1 ≤ n ≤ 30)가 한 줄에 하나씩 주어진다. 출석번호에 중복은 없다.
+        출력
+        출력은 2줄이다. 1번째 줄엔 제출하지 않은 학생의 출석번호 중 가장 작은 것을 출력하고, 2번째 줄에선 그 다음 출석번호를 출력한다.
+
+        2) 유추파악
+        1. 각 줄에 1~30까지의 서로다른 숫자가 28번 들어간다.  
+        2. 1~30까지의 숫자중 선택되지 않은 숫자를 찾는다.
+        3. 두 숫자중 작은수 -큰수 순서로 한줄씩 출력한다.
+
+        3) 주요 단어 이름 선정
+        입력: input_num
+
+        4)테스트 케이스
+        3
+        1
+        4
+        5
+        7
+        9
+        6
+        10
+        11
+        12
+        13
+        14
+        15
+        16
+        17
+        18
+        19
+        20
+        21
+        22
+        23
+        24
+        25
+        26
+        27
+        28
+        29
+        30
+        --> 2
+            8
+
+        5)프로그래밍 순서
+        arraylist 1~30까지의 수 저장 - input_num 입력(반복문for)과 동시에 arraylist 인덱스 삭제(remove)
+        - 작은 수, 큰 수 순으로 출력
+        */
+
+public class Main {
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        // arraylist 1~30까지의 수 저장
+        ArrayList<Integer> arraylist = new ArrayList<>();
+        for(int i=1; i<31; i++) arraylist.add(i);
+        try {
+            // input_num 입력(반복문for)과 동시에 arraylist 인덱스 삭제(remove)
+                for(int i=0; i<28; i++) arraylist.remove(Integer.valueOf(br.readLine()));
+                // 작은 수, 큰 수 순으로 출력
+                bw.write(arraylist.get(0)+ "\n");
+                bw.write(arraylist.get(1)+ "\n");
+                br.close();
+                bw.flush();
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }   
+    }
+}

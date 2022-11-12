@@ -1,0 +1,70 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+        /* 
+        1) 문제파악 
+        첫 줄에 테스트케이스 개수 T,다음 T줄에는 각각 두 정수 A와 B가 주어진다.
+        각 테스트케이스마다 A+B를 한 줄에 하나씩 순서대로 출력한다.
+        BufferedReader와 BufferedWriter를 사용해야 한다.
+        2) 유추파악
+        첫줄 정수 T ,둘째줄 정수 A, B >> BufferedReader 사용
+        A+B 한줄씩 출력 >> 반복문, BufferedWriter 사용
+        3)주요단어 이름 선정
+        테스트케이스 개수 input_T, 정수 A,B = input_A, input_B
+        출력= plus_AB
+        4)테스트 케이스
+        5
+        1 1 = 2
+        12 34 = 46
+        5 500 = 505
+        40 60 = 100
+        1000 1000 = 2000
+        5)프로그래밍 순서
+        BufferedReader로 T입력 후
+        반복문에서 T번 만큼 BufferedReader로 A,B 입력,
+        BufferedWriter로 A+B 출력
+        */
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    public int plus_AB(int input_T){
+        
+        StringTokenizer st;
+        // 반복문에서 T번 만큼 BufferedReader로 A,B 입력,
+        for(int i=0; i<input_T; i++){
+            try {
+            st = new StringTokenizer(br.readLine(), " ");
+            int input_A = Integer.parseInt(st.nextToken());
+            int input_B = Integer.parseInt(st.nextToken());
+            int plus_AB = input_A + input_B;
+            // BufferedWriter로 A+B 출력
+                bw.write(plus_AB+"\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            } 
+        return 0;
+    }
+    public static void main(String[] args) {
+        try {
+            // BufferedReader로 T입력 후
+            int input_T = Integer.parseInt(br.readLine());
+            
+            Main main = new Main();
+            main.plus_AB(input_T);
+            
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
