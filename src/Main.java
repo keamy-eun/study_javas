@@ -1,83 +1,78 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 /* 
 1) 문제파악 
 문제
-"OOXXOXXOOO"와 같은 OX퀴즈의 결과가 있다. O는 문제를 맞은 것이고, X는 문제를 틀린 것이다. 문제를 맞은 경우 그 문제의 점수는 그 문제까지 연속된 O의 개수가 된다. 예를 들어, 10번 문제의 점수는 3이 된다.
-
-"OOXXOXXOOO"의 점수는 1+2+0+0+1+0+0+1+2+3 = 10점이다.
-
-OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.
-
+셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
+양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), ...과 같은 무한 수열을 만들 수 있다. 
+예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. 이런식으로 다음과 같은 수열을 만들 수 있다.
+33, 39, 51, 57, 69, 84, 96, 111, 114, 120, 123, 129, 141, ...
+n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자, 51은 57의 생성자이다. 생성자가 한 개보다 많은 경우도 있다. 예를 들어, 101은 생성자가 2개(91과 100) 있다. 
+생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97
+10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
 입력
-첫째 줄에 테스트 케이스의 개수가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 길이가 0보다 크고 80보다 작은 문자열이 주어진다. 문자열은 O와 X만으로 이루어져 있다.
-
+입력은 없다.
 출력
-각 테스트 케이스마다 점수를 출력한다.
+10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.
+
 2) 유추파악
-*점수들 중 최대값 M, (그 외 점수)/M*100
-1. 정수 N 입력
-2. 정수 N번 입력(여백 구분, 100이하, 전부 0 불가)
-3. 위 정수/최대값*100의 평균 출력
 
 3) 주요 단어 이름 선정
-정수갯수N: input_N  
-N개의 정수들: input_num
-정수들 최대값: max
-정수들 합: sum
 
 4)테스트 케이스
+<출력>
+1
+3
 5
-OOXXOXXOOO
-OOXXOOXXOO
-OXOXOXOXOXOXOX
-OOOOOOOOOO
-OOOOXOOOOXOOOOX
---> 
-10
-9
 7
-55
-30
+9
+20
+31
+42
+53
+64
+ |
+ |       <-- a lot more numbers
+ |
+9903
+9914
+9925
+9927
+9938
+9949
+9960
+9971
+9982
+9993
 
 5)프로그래밍 순서
-정수 N 입력 - for문으로 N개의 (0~100)정수들 입력 - Arraylist에 담기 - 
-정수들 최대값(max),합(sum) 구하기 - (sum*100)/(max*N) 출력
+
 */
 
 public class Main {
     public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));       
 
-        int input_N;
-        ArrayList<Integer> arraylist = new ArrayList<>();
-        StringTokenizer st;
         try {
-            input_N = Integer.parseInt(br.readLine());
-            float sum = 0;
-            int max = 0;
-            st = new StringTokenizer(br.readLine(), " ");
-            
-            for(int i=0; i<input_N; i++){
-                arraylist.add(Integer.parseInt(st.nextToken()));
-                sum += arraylist.get(i); //합 구하기
-                if(arraylist.get(i)>max) max = arraylist.get(i); //최대값 구하기
+            int num = 1234;
+            int num1 = num/1000%10;
+            int num2 = num/100%10;
+            int num3 = num/10%10;
+            int num4 = num%10;
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            for(int i=1; i<1000; i++) arrayList.add(i);  //1~9999 배열 생성
+            for(int i=100; i<1000; i++){
+                num = i;
+                //1000~9999까지
+                if(arrayList.contains(num+num1+num2+num3))
+                arrayList.remove(num+num1+num2+num3);
             }
-            bw.write((sum*100)/(max*input_N)+"\n");  //평균 출력
-            br.close();
-            bw.flush();
-            bw.close();
-
+            System.out.println(arrayList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-            
+        
     }
 }

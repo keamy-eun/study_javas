@@ -1,0 +1,78 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제파악 
+문제
+대학생 새내기들의 90%는 자신이 반에서 평균은 넘는다고 생각한다. 당신은 그들에게 슬픈 진실을 알려줘야 한다.
+입력
+첫째 줄에는 테스트 케이스의 개수 C가 주어진다.
+둘째 줄부터 각 테스트 케이스마다 학생의 수 N(1 ≤ N ≤ 1000, N은 정수)이 첫 수로 주어지고, 이어서 N명의 점수가 주어진다. 점수는 0보다 크거나 같고, 100보다 작거나 같은 정수이다.
+
+출력
+각 케이스마다 한 줄씩 평균을 넘는 학생들의 비율을 반올림하여 소수점 셋째 자리까지 출력한다.
+2) 유추파악
+정수 N,C = input_N, C
+평균넘은 학생수 = over_avg
+합계 = sum
+평균 = avg
+비율 = rate
+
+3) 주요 단어 이름 선정
+첫째줄 정수 N 입력
+둘째줄 부터 정수 C 입력 후 C번 0~100사이의 정수 입력, 평균 계산, 평균 넘는 비율 출력(반올림하여 소숫점 셋째자리까지)
+N번 반복
+
+4)테스트 케이스
+5
+5 50 50 70 80 100
+7 100 95 90 80 70 60 50
+3 70 90 80
+3 70 90 81
+9 100 99 98 97 96 95 94 93 91
+--> 
+40.000%
+57.143%
+33.333%
+66.667%
+55.556%
+
+5)프로그래밍 순서
+첫째줄 정수 N 입력 - (첫번째 for)둘쨰줄부터 공백으로 구분하여(StringTokenizer) 정수 C입력, (이중 for)C번 정수 입력, 평균 계산, 평균 비율 계산, 출력
+
+*/
+
+public class Main {
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));       
+
+        try {
+            int input_N = Integer.parseInt(br.readLine());
+            StringTokenizer st;
+            
+            for(int i = 0; i<input_N; i++){
+                double sum = 0;
+                double avg = 0;
+                st= new StringTokenizer(br.readLine(), " ");
+                int C = Integer.parseInt(st.nextToken());  //정수 C
+                ArrayList<Integer> arrayList = new ArrayList<>();
+                while(st.hasMoreTokens()) arrayList.add(Integer.parseInt(st.nextToken()));
+                for(int j=0; j<C; j++){
+                    sum += arrayList.get(j);  //합계
+                }
+                avg = sum/C; //평균
+                Double over_avg=0.0;
+                for(int k=0; k<C; k++){
+                    if(arrayList.get(k)>avg) over_avg++;
+                }
+                System.out.printf("%.3f%%\n", (over_avg/C)*100);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+}

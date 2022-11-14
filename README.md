@@ -10,3 +10,5 @@
 |1차원 배열| 인덱스값 찾기 |[java](https://www.acmicpc.net/source/51505059)| | 설명 |
 |1차원 배열| 나머지 갯수 |[java](https://www.acmicpc.net/source/51509011)| | 설명 |
 |1차원 배열| 평균 |[java](https://www.acmicpc.net/source/51629699)| | 설명 |
+|1차원 배열| OX퀴즈 |[java](https://www.acmicpc.net/source/51646657)| | 설명 |
+|1차원 배열| 평균은 넘겠지 |[java](https://www.acmicpc.net/source/51652942)| | 설명 |
