@@ -1,78 +1,75 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /* 
 1) 문제파악 
 문제
-셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
-양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), ...과 같은 무한 수열을 만들 수 있다. 
-예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. 이런식으로 다음과 같은 수열을 만들 수 있다.
-33, 39, 51, 57, 69, 84, 96, 111, 114, 120, 123, 129, 141, ...
-n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자, 51은 57의 생성자이다. 생성자가 한 개보다 많은 경우도 있다. 예를 들어, 101은 생성자가 2개(91과 100) 있다. 
-생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97
-10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
+상근이의 동생 상수는 수학을 정말 못한다. 상수는 숫자를 읽는데 문제가 있다. 
+이렇게 수학을 못하는 상수를 위해서 상근이는 수의 크기를 비교하는 문제를 내주었다. 
+상근이는 세 자리 수 두 개를 칠판에 써주었다. 그 다음에 크기가 큰 수를 말해보라고 했다.
+
+상수는 수를 다른 사람과 다르게 거꾸로 읽는다. 예를 들어, 734와 893을 칠판에 적었다면, 
+상수는 이 수를 437과 398로 읽는다. 따라서, 상수는 두 수중 큰 수인 437을 큰 수라고 말할 것이다.
+
+두 수가 주어졌을 때, 상수의 대답을 출력하는 프로그램을 작성하시오.
+
 입력
-입력은 없다.
+첫째 줄에 상근이가 칠판에 적은 두 수 A와 B가 주어진다. 두 수는 같지 않은 세 자리 수이며, 0이 포함되어 있지 않다.
+
 출력
-10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.
+첫째 줄에 상수의 대답을 출력한다.
 
 2) 유추파악
+첫줄에 공백을 기준으로 두 개의 세자리 정수가 주어진다. 세자리 정수는 역순으로 배열된 후 큰 수를 출력한다.
+
 
 3) 주요 단어 이름 선정
+입력 str = input_str
 
 4)테스트 케이스
 <출력>
-1
-3
-5
-7
-9
-20
-31
-42
-53
-64
- |
- |       <-- a lot more numbers
- |
-9903
-9914
-9925
-9927
-9938
-9949
-9960
-9971
-9982
-9993
+734 893
+--> 437
+
+221 231
+--> 132
+
+839 237
+--> 938
+
+
 
 5)프로그래밍 순서
 
 */
 
 public class Main {
-    public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));       
-
+    public int A(String input_str){
+        StringTokenizer st = new StringTokenizer(input_str," "); // 공백을 기준으로 문자열 구분
+        ArrayList<String> arrayList = new ArrayList<>();
+        while(st.hasMoreTokens()==true){
+            arrayList.add(st.nextToken());
+        }
+        int size=arrayList.size();
+        return size;
+    }
+    public static void main(String[] args) {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    
         try {
-            int num = 1234;
-            int num1 = num/1000%10;
-            int num2 = num/100%10;
-            int num3 = num/10%10;
-            int num4 = num%10;
-            ArrayList<Integer> arrayList = new ArrayList<>();
-            for(int i=1; i<1000; i++) arrayList.add(i);  //1~9999 배열 생성
-            for(int i=100; i<1000; i++){
-                num = i;
-                //1000~9999까지
-                if(arrayList.contains(num+num1+num2+num3))
-                arrayList.remove(num+num1+num2+num3);
-            }
-            System.out.println(arrayList);
+            Main main = new Main();
+            int size = main.A(br.readLine());
+            bw.write(size+"\n");
+            br.close();
+            bw.flush();
+            bw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 }

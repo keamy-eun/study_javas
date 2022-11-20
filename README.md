@@ -12,3 +12,12 @@
 |1차원 배열| 평균 |[java](https://www.acmicpc.net/source/51629699)| | 설명 |
 |1차원 배열| OX퀴즈 |[java](https://www.acmicpc.net/source/51646657)| | 설명 |
 |1차원 배열| 평균은 넘겠지 |[java](https://www.acmicpc.net/source/51652942)| | 설명 |
+|함수| 셀프넘버 |[java](https://www.acmicpc.net/source/51765711)| | 설명 |
+|함수| 한수 |[java](https://www.acmicpc.net/source/51780704)|[java](https://www.acmicpc.net/source/51780576) | 설명 |
+|문자열| 아스키코드 |[java](https://www.acmicpc.net/source/51798621)|[java](https://www.acmicpc.net/source/51798670) | 설명 |
+|문자열| 숫자의합 |[java](https://www.acmicpc.net/source/51852562)|[java](https://www.acmicpc.net/source/51852853) | 설명 |
+|문자열| 알파벳찾기 |[java](https://www.acmicpc.net/source/51856094)|[java](https://www.acmicpc.net/source/51856385) | 설명 |
+|문자열| 문자열반복 |[java](https://www.acmicpc.net/source/51892498)|[java](https://www.acmicpc.net/source/51892759) | 설명 |
+|문자열| 단어공부 |[java](https://www.acmicpc.net/source/51903432)|[java](https://www.acmicpc.net/source/51903523) | 설명 |
+|문자열| 단어의갯수 |[java](https://www.acmicpc.net/source/51906877)|[java](https://www.acmicpc.net/source/51906980) | 설명 |
+|문자열| 상수 |[java]()|[java]() | 설명 |
