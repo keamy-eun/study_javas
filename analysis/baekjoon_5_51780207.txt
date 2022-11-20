@@ -1,0 +1,74 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+/* 
+1) 문제파악 
+문제
+어떤 양의 정수 X의 각 자리가 등차수열을 이룬다면, 그 수를 한수라고 한다. 등차수열은 연속된 두 개의 수의 차이가 일정한 수열을 말한다. 
+N이 주어졌을 때, 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력하는 프로그램을 작성하시오. 
+
+입력
+첫째 줄에 1,000보다 작거나 같은 자연수 N이 주어진다.
+
+출력
+첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.
+
+2) 유추파악
+첫째줄 N 입력 -> 각 자리수 가 등차수열을 이루는 N보다 작은수의 갯수를 구한다.
+
+3) 주요 단어 이름 선정
+입력N = input_N
+
+4)테스트 케이스
+<출력>
+110 --> 99
+1 --> 1
+210 --> 105
+1000 --> 144
+500 --> 119
+
+5)프로그래밍 순서
+N입력 -> 1~N까지의 Arraylist 생성 -> 등차수열의 이루는 수(한수)를 Arraylist에서 remove(Integer.valueOf())
+-> (Arraylist.size - 한수) 출력
+*/
+
+public class Main {
+    public int A(int input_N){
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        int sum = 0;
+        for(int i=1; i<input_N+1; i++) arrayList.add(i);  //1~input_N까지의 배열 생성
+        for(int i=0; i<input_N+1; i++){
+            int num1 = i/100%10;
+            int num2 = i/10%10;
+            int num3 = i%10;
+
+            int num1_num2 = num1-num2;
+            int num2_num3 = num2-num3;
+            if(i>99 && i<1000){
+                if(num2_num3 == num1_num2) {
+                arrayList.remove(Integer.valueOf(i));
+                sum ++;
+                }
+            } else if(i>0 && i<100) sum++;
+        }
+        return sum;
+    }
+    public static void main(String[] args) {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            Main main = new Main();
+            bw.write(main.A(Integer.parseInt(br.readLine()))+"\n");
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+}

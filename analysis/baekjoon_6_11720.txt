@@ -1,0 +1,71 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+/* 
+1) 문제파악 
+문제
+N개의 숫자가 공백 없이 쓰여있다. 이 숫자를 모두 합해서 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 숫자의 개수 N (1 ≤ N ≤ 100)이 주어진다. 둘째 줄에 숫자 N개가 공백없이 주어진다.
+
+출력
+입력으로 주어진 숫자 N개의 합을 출력한다.
+
+2) 유추파악
+첫줄 정수 N 입력 -> 둘쨰줄 N개의 연속된 숫자를 자리수별로 합 -> 출력
+
+3) 주요 단어 이름 선정
+입력N = input_N
+N개의 숫자배열 = number_N
+
+4)테스트 케이스
+<출력>
+1
+1
+--> 1
+5
+54321
+--> 15
+25
+7000000000000000000000000
+--> 7
+11
+10987654321
+--> 46
+
+5)프로그래밍 순서
+정수 N 입력 -> N개의 정수 입력 ->
+for문으로 (N번) 각 자리수 합 구하기 -> 출력
+*/
+
+public class Main {
+    public int A(int input_N, String number_N){
+        int sum =0;
+        for(int i=0; i<input_N; i++){
+            sum += Integer.parseInt((number_N.charAt(i)+""));
+        }
+        return sum;
+    }
+    public static void main(String[] args) {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+     
+        try {
+            int a = Integer.parseInt(br.readLine());
+            String b= br.readLine();
+
+            Main main = new Main();
+            int answer = main.A(a, b);
+        
+            bw.write(answer+"\n");
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

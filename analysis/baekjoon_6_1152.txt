@@ -1,0 +1,71 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제파악 
+문제
+영어 대소문자와 공백으로 이루어진 문자열이 주어진다. 이 문자열에는 몇 개의 단어가 있을까? 
+이를 구하는 프로그램을 작성하시오. 단, 한 단어가 여러 번 등장하면 등장한 횟수만큼 모두 세어야 한다.
+
+입력
+첫 줄에 영어 대소문자와 공백으로 이루어진 문자열이 주어진다. 이 문자열의 길이는 1,000,000을 넘지 않는다. 
+단어는 공백 한 개로 구분되며, 공백이 연속해서 나오는 경우는 없다. 또한 문자열은 공백으로 시작하거나 끝날 수 있다.
+
+출력
+첫째 줄에 단어의 개수를 출력한다.
+
+2) 유추파악
+문자열 입력 - 문자열을 공백을 기준으로 몇개의 파트로 나눠지는지 출력
+
+
+3) 주요 단어 이름 선정
+입력 str = input_str
+
+4)테스트 케이스
+<출력>
+The Curious Case of Benjamin Button
+-->
+6
+
+The first character is a blank
+-->
+6
+
+The last character is a blank 
+-->
+6
+
+5)프로그래밍 순서
+문자열 str 입력 - StringTokenizer 사용해서 공백을 기준으로 배열에 입력 - 배열 사이즈 출력
+*/
+
+public class Main {
+    public int A(String input_str){
+        StringTokenizer st = new StringTokenizer(input_str," "); // 공백을 기준으로 문자열 구분
+        ArrayList<String> arrayList = new ArrayList<>();
+        while(st.hasMoreTokens()==true){
+            arrayList.add(st.nextToken());
+        }
+        int size=arrayList.size();
+        return size;
+    }
+    public static void main(String[] args) {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    
+        try {
+            Main main = new Main();
+            int size = main.A(br.readLine());
+            bw.write(size+"\n");
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

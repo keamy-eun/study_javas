@@ -1,0 +1,79 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+/* 
+1) 문제파악 
+문제
+문자열 S를 입력받은 후에, 각 문자를 R번 반복해 새 문자열 P를 만든 후 출력하는 프로그램을 작성하시오. 
+즉, 첫 번째 문자를 R번 반복하고, 두 번째 문자를 R번 반복하는 식으로 P를 만들면 된다. S에는 QR Code "alphanumeric" 문자만 들어있다.
+
+QR Code "alphanumeric" 문자는 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\$%*+-./: 이다.
+
+입력
+첫째 줄에 테스트 케이스의 개수 T(1 ≤ T ≤ 1,000)가 주어진다. 각 테스트 케이스는 반복 횟수 R(1 ≤ R ≤ 8), 문자열 S가 공백으로 구분되어 주어진다. S의 길이는 적어도 1이며, 20글자를 넘지 않는다. 
+
+출력
+각 테스트 케이스에 대해 P를 출력한다.
+2) 유추파악
+정수 N 입력 - 정수 P 입력 후 문자열 입력 - 문자열의 각 인덱스를 P번 반복하여 새로운 문자열 출력 - N번 반복
+
+3) 주요 단어 이름 선정
+입력 N, str = input_N, input_str
+
+4)테스트 케이스
+<출력>
+2
+3 ABC
+5 /HTP
+--> 
+AAABBBCCC
+/////HHHHHTTTTTPPPPP
+
+5)프로그래밍 순서
+정수 N 입력 - 정수P와 문자열 입력 후 ArrayList 문자열만에 저장 - 문자열의 각 문자를 P만큼 반복하여 출력한다
+*/
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    
+    public void A(int input_N) throws IOException{
+        String str;
+        int str_first; //문자열 반복횟수
+        ArrayList<String> arrayList = new ArrayList<>();
+        int num =0;
+        while(num != input_N){ //N번 반복
+            str = br.readLine();
+            str_first = Integer.parseInt(str.charAt(0)+"");
+        for(int i =2; i<str.length(); i++){  //str의 정수와 공백 제외하고 index 2부터 저장
+            arrayList.add(str.charAt(i)+"");
+        }
+        for(int i =0; i<arrayList.size(); i++){   //문자열 반복하여 출력
+            for(int j = 0; j<str_first; j++){
+            bw.write(arrayList.get(i)+"");
+            }
+        } bw.write("\n");
+        arrayList.clear();
+        num++;
+        }
+    }
+    public static void main(String[] args) {     
+
+     
+        try {
+            int input_N = Integer.parseInt(br.readLine());
+            Main main = new Main();
+            main.A(input_N);
+
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
