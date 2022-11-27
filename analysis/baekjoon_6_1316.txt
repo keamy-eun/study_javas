@@ -1,0 +1,117 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+/* 
+1) 문제파악 
+문제
+그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 
+예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, 
+kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다.
+단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 
+둘째 줄부터 N개의 줄에 단어가 들어온다. 단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다.
+
+출력
+첫째 줄에 그룹 단어의 개수를 출력한다.
+
+2) 유추파악
+정수 N 입력 후 서로다른 문자열+개행문자 N번 입력
+입력받은 문자열에서 각 문자는 연속해서 나와도 되지만 끊겨서 나오면 안된다.
+
+3) 주요 단어 이름 선정
+input_str
+
+4)테스트 케이스
+<출력>
+3
+happy
+new
+year
+--> 3
+
+4
+aba
+abab
+abcabc
+a
+--> 1
+
+5
+ab
+aa
+aca
+ba
+bb
+--> 4
+
+2
+yzyzy
+zyzyz
+--> 0
+
+1
+z
+--> 1
+
+
+5)프로그래밍 순서
+정수 N 입력 - 문자열에 있는 문자가 연속되있는지 확인 - 인덱스 앞뒤로 같다면 뒤에 인덱스 삭제
+- 연속된 문자가 없는 문자열을 만든 뒤 반복된 문자 유무 파악하여 카운트 - N번 반복 후 카운트 출력
+*/
+
+public class Main {
+    //문자열 길이 체크 함수
+    public int A(ArrayList arrayList){
+        int count = 0;
+        if( arrayList.size()<3) { // 문자열 길이가 1~2일 때
+            count ++;
+        } else if( arrayList.size()>2) {// 문자열 길이가 3 이상일 때
+            boolean check = true;
+            for(int i=0; i<arrayList.size()-2; i++){
+                for(int j=i; j<arrayList.size()-2; j++){
+                    if(arrayList.get(i).equals(arrayList.get(j+2))) check = false; // 인덱스 i와 i+2~가 같을 때
+                }
+                if(i==(arrayList.size()-3) && check == true) count ++; //i가 마지막이고 check = true이면 최종 cnt +1
+            }
+            arrayList.removeAll(arrayList);
+        } 
+        return count;
+    }
+    
+    public static void main(String[] args) {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            int input_N = Integer.parseInt(br.readLine());
+            int cnt = 0;           
+            ArrayList<String> arrayList;
+            for(int k = 0; k <input_N; k ++){
+                arrayList = new ArrayList<>();
+                String input_str = br.readLine();
+                for(int i=0; i<input_str.length(); i++) arrayList.add(input_str.charAt(i)+"");
+
+                //반복되는 연결된 문자들을 하나의 문자만 남기기
+                int n =0;
+                while(n!=arrayList.size()-1){ 
+                    if(arrayList.get(n).equals(arrayList.get(n+1))) arrayList.remove(n+1);
+                    else n++;
+                }
+                Main main = new Main();
+                cnt += main.A(arrayList);
+
+            }
+            bw.write(cnt+"\n");
+            br.close();
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

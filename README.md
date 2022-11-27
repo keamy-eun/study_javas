@@ -20,4 +20,9 @@
 |문자열| 문자열반복 |[java](https://www.acmicpc.net/source/51892498)|[java](https://www.acmicpc.net/source/51892759) | 설명 |
 |문자열| 단어공부 |[java](https://www.acmicpc.net/source/51903432)|[java](https://www.acmicpc.net/source/51903523) | 설명 |
 |문자열| 단어의갯수 |[java](https://www.acmicpc.net/source/51906877)|[java](https://www.acmicpc.net/source/51906980) | 설명 |
-|문자열| 상수 |[java]()|[java]() | 설명 |
+|문자열| 상수 |[java](https://www.acmicpc.net/source/51908551)|[java](https://www.acmicpc.net/source/51908701) | 설명 |
+|문자열| 다이얼 |[java](https://www.acmicpc.net/source/51970681)|[java](https://www.acmicpc.net/source/51970723) | 설명 |
+|문자열| 크로아티아 알파벳 |[java](https://www.acmicpc.net/source/51997458)|[java](https://www.acmicpc.net/source/51997548) | 설명 |
+|문자열| 그룹단어체커 |[java](https://www.acmicpc.net/source/52117800)|[java](https://www.acmicpc.net/source/52118221) | 설명 |
+|기본수학1| 손익분기점 |[java](https://www.acmicpc.net/source/52145417)|[java](https://www.acmicpc.net/source/52145473) | 설명 |
+|기본수학1| 벌집 |[java]()|[java]() | 설명 |
