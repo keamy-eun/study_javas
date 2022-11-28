@@ -1,0 +1,62 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+/* 
+위의 그림과 같이 육각형으로 이루어진 벌집이 있다. 그림에서 보는 바와 같이 중앙의 방 1부터 시작해서 
+이웃하는 방에 돌아가면서 1씩 증가하는 번호를 주소로 매길 수 있다. 숫자 N이 주어졌을 때, 
+벌집의 중앙 1에서 N번 방까지 최소 개수의 방을 지나서 갈 때 몇 개의 방을 지나가는지(시작과 끝을 포함하여)를 계산하는 프로그램을 작성하시오. 
+예를 들면, 13까지는 3개, 58까지는 5개를 지난다.
+
+입력
+첫째 줄에 N(1 ≤ N ≤ 1,000,000,000)이 주어진다.
+
+출력
+입력으로 주어진 방까지 최소 개수의 방을 지나서 갈 때 몇 개의 방을 지나는지 출력한다.
+
+2) 유추파악
+1번방부터 n번방까지 갈 때 지나가는 최소 방의 갯수
+
+3) 주요 단어 이름 선정
+input_num
+
+4)테스트 케이스
+<출력>
+13
+--> 3
+
+5)프로그래밍 순서
+최소 경유 방의 갯수는 1번방으로부터 몇번째 줄에 있는지와 같다.
+정수 n 입력 후 n 이 몇번째 줄에 있는지 출력
+*/
+
+public class Main {
+    public int A(int input_num){
+        int n = 0; // n번째 줄
+        boolean check = true;
+        while(check){
+            if(3*n*(n-1)+1>=input_num){
+                check = false;
+            }else n++;
+        }
+        if(input_num ==1) n = 1;
+        return n;
+    }
+    public static void main(String[] args) {     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            int input_num = Integer.parseInt(br.readLine());
+            Main main = new Main();
+            
+        bw.write(main.A(input_num)+"\n");
+        br.close();
+        bw.flush();
+        bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -25,4 +25,17 @@
 |문자열| 크로아티아 알파벳 |[java](https://www.acmicpc.net/source/51997458)|[java](https://www.acmicpc.net/source/51997548) | 설명 |
 |문자열| 그룹단어체커 |[java](https://www.acmicpc.net/source/52117800)|[java](https://www.acmicpc.net/source/52118221) | 설명 |
 |기본수학1| 손익분기점 |[java](https://www.acmicpc.net/source/52145417)|[java](https://www.acmicpc.net/source/52145473) | 설명 |
-|기본수학1| 벌집 |[java]()|[java]() | 설명 |
+|기본수학1| 벌집 |[java](https://www.acmicpc.net/source/52148764)|[java](https://www.acmicpc.net/source/52148833) | 설명 |
+|기본수학1| 분수찾기 |[java](https://www.acmicpc.net/source/52178241)|[java](https://www.acmicpc.net/source/52178317) | 설명 |
+
+<!-- |기본수학1| 달팽이 |[java]()|[java]() | 설명 |
+|기본수학1| ACM 호텔 |[java]()|[java]() | 설명 |
+|기본수학1| 부녀회장 |[java]()|[java]() | 설명 |
+|기본수학1| 설탕배달 |[java]()|[java]() | 설명 |
+|기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
+|기본수학2| 소수찾기 |[java]()|[java]() | 설명 |
+|기본수학2| 소수 |[java]()|[java]() | 설명 |
+|기본수학2| 소인수분해 |[java]()|[java]() | 설명 |
+|기본수학2| 소수구하기 |[java]()|[java]() | 설명 |
+|기본수학2| 베르트랑공준 |[java]()|[java]() | 설명 |
+|기본수학2| 골드바흐추측 |[java]()|[java]() | 설명 | -->
