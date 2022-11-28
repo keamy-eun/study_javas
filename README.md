@@ -27,9 +27,11 @@
 |기본수학1| 손익분기점 |[java](https://www.acmicpc.net/source/52145417)|[java](https://www.acmicpc.net/source/52145473) | 설명 |
 |기본수학1| 벌집 |[java](https://www.acmicpc.net/source/52148764)|[java](https://www.acmicpc.net/source/52148833) | 설명 |
 |기본수학1| 분수찾기 |[java](https://www.acmicpc.net/source/52178241)|[java](https://www.acmicpc.net/source/52178317) | 설명 |
+|기본수학1| 달팽이 |[java](https://www.acmicpc.net/source/52188696)|[java](https://www.acmicpc.net/source/52188796) | 설명 |
+|기본수학1| ACM 호텔 |[java](https://www.acmicpc.net/source/52190295)|[java](https://www.acmicpc.net/source/52190683) | 설명 |
 
-<!-- |기본수학1| 달팽이 |[java]()|[java]() | 설명 |
-|기본수학1| ACM 호텔 |[java]()|[java]() | 설명 |
+<!--
+
 |기본수학1| 부녀회장 |[java]()|[java]() | 설명 |
 |기본수학1| 설탕배달 |[java]()|[java]() | 설명 |
 |기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
