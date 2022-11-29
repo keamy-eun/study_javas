@@ -1,77 +1,85 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 /* 
 문제
-평소 반상회에 참석하는 것을 좋아하는 주희는 이번 기회에 부녀회장이 되고 싶어 각 층의 사람들을 불러 모아 반상회를 주최하려고 한다.
+상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다.
 
-이 아파트에 거주를 하려면 조건이 있는데, “a층의 b호에 살려면 자신의 아래(a-1)층의 1호부터 b호까지 사람들의 수의 합만큼 사람들을 데려와 살아야 한다” 는 계약 조항을 꼭 지키고 들어와야 한다.
+상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램 3개와 3킬로그램 1개를 배달하면, 더 적은 개수의 봉지를 배달할 수 있다.
 
-아파트에 비어있는 집은 없고 모든 거주민들이 이 계약 조건을 지키고 왔다고 가정했을 때, 주어지는 양의 정수 k와 n에 대해 k층에 n호에는 몇 명이 살고 있는지 출력하라. 
-단, 아파트에는 0층부터 있고 각층에는 1호부터 있으며, 0층의 i호에는 i명이 산다.
+상근이가 설탕을 정확하게 N킬로그램 배달해야 할 때, 봉지 몇 개를 가져가면 되는지 그 수를 구하는 프로그램을 작성하시오.
 
 입력
-첫 번째 줄에 Test case의 수 T가 주어진다. 그리고 각각의 케이스마다 입력으로 첫 번째 줄에 정수 k, 두 번째 줄에 정수 n이 주어진다
+첫째 줄에 N이 주어진다. (3 ≤ N ≤ 5000)
 
 출력
-각각의 Test case에 대해서 해당 집에 거주민 수를 출력하라.
-
+상근이가 배달하는 봉지의 최소 개수를 출력한다. 만약, 정확하게 N킬로그램을 만들 수 없다면 -1을 출력한다.
 2) 유추파악
-a층 b호 = a-1층 1호~b호 의 거주자 수 합 
-a층 b호의 거주자 수를 구하라
+정수가 주어지고 5와 3을 사용해서 나눠 떨어지해라. 단, 5를 우선으로 사용한다. 
+나눠떨어지지 않으면 -1을 출력.
 
 3) 주요 단어 이름 선정
+정수 N
+봉지갯수 result
 
 4)테스트 케이스
 <출력>
-2
-1
-3
-2
-3
---> 
-6
-10
+18
+--> 4
 
+4
+--> -1
+
+6
+--> 2
+
+9
+--> 3
+
+11
+--> 3
 
 5)프로그래밍 순서
-테스트케이스 T 입력 - 0<a,b<15 이므로 2중포문을 사용해서 층수를 구한다 - 출력
+정수 N 입력 - 5를 나눴을때 나머지가 0,1,2,3,4 인 경우로 나눈다.
+0인 경우 - 5만 사용한다.
+1인 경우 - (5로 나눈 몫 -1) + 3을 2번 사용
+2인 경우 - N이 12이상일때 =>(5로 나눈 몫 -2) + 3을 4번 사용
+        N이 12이상이 아닐때 => -1 출력
+3인 경우 -  5로 나눈 몫+ 3을 1번 사용
+4인 경우 -  N이 9이상일때 =>(5로 나눈 몫 -1) + 3을 3번 사용
+        N이 9이상이 아닐때 => -1 출력
 */
 
 public class Main {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    
-    public void A(int T, int num[][]) throws NumberFormatException, IOException{
-        for(int i=0; i<T; i++){
-            int a = Integer.parseInt(br.readLine());
-            int b = Integer.parseInt(br.readLine());
-            bw.write(num[a][b]+"\n");
-            bw.flush();
+    public int A(int N){
+        int result = 0;
+        if(N%5==0){
+            result = N/5;
+        } else if(N%5==1){
+            result = N/5-1+2; 
+        }else if(N%5==2){
+            if(N>=12) result = N/5-2+4;
+            else result = -1;
+        }else if(N%5==3){
+            result = N/5+1;
+        }else if(N%5==4){
+            if(N>=9) result = N/5-1+3;
+            else result = -1;
         }
+        return result;
     }
         public static void main(String[] args) {     
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
-            //각 층에 호 수 값을 구한다
-            int[][] num = new int[15][15];
-            for(int i=0; i<15; i++){
-                num[i][1] = 1;
-                num[0][i] = i;
-            }
-            //1호라인, 0층 호수는 1인 처음값을 구한다
-            for(int i=1; i<15; i++){
-                for(int j=2; j<15; j++){
-                    num[i][j] = num[i][j-1]+num[i-1][j];
-                }
-            }
-            int T = Integer.parseInt(br.readLine());
+            int N = Integer.parseInt(br.readLine());
             Main main = new Main();
-            main.A(T,num);
 
+            bw.write(main.A(N)+"\n");
+            bw.flush();
             br.close();
             bw.close();
         } catch (Exception e) {
