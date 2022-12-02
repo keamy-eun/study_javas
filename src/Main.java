@@ -2,83 +2,97 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /* 
 문제
-상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다.
+자연수 M과 N이 주어질 때 M이상 N이하의 자연수 중 소수인 것을 모두 골라 이들 소수의 합과 최솟값을 찾는 프로그램을 작성하시오.
 
-상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램 3개와 3킬로그램 1개를 배달하면, 더 적은 개수의 봉지를 배달할 수 있다.
-
-상근이가 설탕을 정확하게 N킬로그램 배달해야 할 때, 봉지 몇 개를 가져가면 되는지 그 수를 구하는 프로그램을 작성하시오.
+예를 들어 M=60, N=100인 경우 60이상 100이하의 자연수 중 소수는 61, 67, 71, 73, 79, 83, 89, 97 총 8개가 있으므로, 이들 소수의 합은 620이고, 최솟값은 61이 된다.
 
 입력
-첫째 줄에 N이 주어진다. (3 ≤ N ≤ 5000)
+입력의 첫째 줄에 M이, 둘째 줄에 N이 주어진다.
+
+M과 N은 10,000이하의 자연수이며, M은 N보다 작거나 같다.
 
 출력
-상근이가 배달하는 봉지의 최소 개수를 출력한다. 만약, 정확하게 N킬로그램을 만들 수 없다면 -1을 출력한다.
+M이상 N이하의 자연수 중 소수인 것을 모두 찾아 첫째 줄에 그 합을, 둘째 줄에 그 중 최솟값을 출력한다. 
+
+단, M이상 N이하의 자연수 중 소수가 없을 경우는 첫째 줄에 -1을 출력한다.
+
 2) 유추파악
-정수가 주어지고 5와 3을 사용해서 나눠 떨어지해라. 단, 5를 우선으로 사용한다. 
-나눠떨어지지 않으면 -1을 출력.
+첫째줄에 M 둘째줄에 N을 입력한다. M<= 소수들 <=N 이고 소수들의 합과 소수들 중의 최소값을 구하라.
+소수가 없을경우 -1 출력
 
 3) 주요 단어 이름 선정
-정수 N
-봉지갯수 result
+sum = 소수들의 합
+min = 소수들 중 최소값
 
 4)테스트 케이스
 <출력>
-18
---> 4
+60
+100
+--> 
+620
+61
 
-4
---> -1
+64
+65
+--> 
+-1
 
-6
---> 2
-
-9
---> 3
-
-11
---> 3
 
 5)프로그래밍 순서
-정수 N 입력 - 5를 나눴을때 나머지가 0,1,2,3,4 인 경우로 나눈다.
-0인 경우 - 5만 사용한다.
-1인 경우 - (5로 나눈 몫 -1) + 3을 2번 사용
-2인 경우 - N이 12이상일때 =>(5로 나눈 몫 -2) + 3을 4번 사용
-        N이 12이상이 아닐때 => -1 출력
-3인 경우 -  5로 나눈 몫+ 3을 1번 사용
-4인 경우 -  N이 9이상일때 =>(5로 나눈 몫 -1) + 3을 3번 사용
-        N이 9이상이 아닐때 => -1 출력
+소수를 구하는 for문에서 범위를 i=M; i<=N 으로 작성하여 범위 내의 소수값을 구하고 ArrayList에 넣는다.
+for문으로 ArrayList 인덱스들의 합을 구하고 컬랙션 최소값으로 최소값을 구한다.
 */
 
 public class Main {
-    public int A(int N){
-        int result = 0;
-        if(N%5==0){
-            result = N/5;
-        } else if(N%5==1){
-            result = N/5-1+2; 
-        }else if(N%5==2){
-            if(N>=12) result = N/5-2+4;
-            else result = -1;
-        }else if(N%5==3){
-            result = N/5+1;
-        }else if(N%5==4){
-            if(N>=9) result = N/5-1+3;
-            else result = -1;
+    // 정수 M,N이 주어질때 소수값 구하는 함수 . M<=소수들<=N 
+    public ArrayList A(int M, int N){
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for(int i=M; i<=N; i++){
+            int num=0;
+            for(int j=2; j<=N; j++){ 
+                if(j>=i)break; // 자신의 값보다 큰 값으로 나누면 break;
+                else if(num==1 || i%j==0) { // 소인수분해가 되면 num++
+                    num ++; 
+                    break;}                 
+            }
+            if(num==0 && i !=1) {  // 1은 소수가 아니므로 제외
+                arrayList.add(i);
+            }
         }
-        return result;
+        return arrayList;
+    }
+
+    // ArrayList 인덱스의 총 합과 최소값을 구하는 함수
+    public String B(ArrayList<Integer> arrayList){
+        String print = "-1";
+        if(arrayList.size() !=0){
+            int sum = 0;
+            for(int i=0; i<arrayList.size(); i++){
+                sum += arrayList.get(i);
+            }
+            int min = Collections.min(arrayList);
+            print = sum + "\n" + min;
+        }
+        return print;
     }
         public static void main(String[] args) {     
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
+            int M = Integer.parseInt(br.readLine());
             int N = Integer.parseInt(br.readLine());
+            
             Main main = new Main();
-
-            bw.write(main.A(N)+"\n");
+            ArrayList<Integer> arrayList = main.A(M,N);
+            String print = main.B(arrayList);
+            
+            bw.write(print+"\n");
             bw.flush();
             br.close();
             bw.close();

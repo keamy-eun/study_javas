@@ -31,11 +31,11 @@
 |기본수학1| ACM 호텔 |[java](https://www.acmicpc.net/source/52190295)|[java](https://www.acmicpc.net/source/52190683) | 설명 |
 |기본수학1| 부녀회장 |[java](https://www.acmicpc.net/source/52216456)|[java](https://www.acmicpc.net/source/52216707) | 설명 |
 |기본수학1| 설탕배달 |[java](https://www.acmicpc.net/source/52241226)|[java](https://www.acmicpc.net/source/52241239) | 설명 |
+|기본수학2| 소수찾기 |[java](https://www.acmicpc.net/source/52296472)|[java](https://www.acmicpc.net/source/52306174) | 설명 |
+|기본수학2| 소수 |[java](https://www.acmicpc.net/source/52306486)|[java](https://www.acmicpc.net/source/52306773) | 설명 |
 
 <!--
 |기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
-|기본수학2| 소수찾기 |[java]()|[java]() | 설명 |
-|기본수학2| 소수 |[java]()|[java]() | 설명 |
 |기본수학2| 소인수분해 |[java]()|[java]() | 설명 |
 |기본수학2| 소수구하기 |[java]()|[java]() | 설명 |
 |기본수학2| 베르트랑공준 |[java]()|[java]() | 설명 |
