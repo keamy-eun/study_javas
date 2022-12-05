@@ -1,0 +1,75 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+/* 
+문제
+M이상 N이하의 소수를 모두 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 자연수 M과 N이 빈 칸을 사이에 두고 주어진다. 
+(1 ≤ M ≤ N ≤ 1,000,000) M이상 N이하의 소수가 하나 이상 있는 입력만 주어진다.
+
+출력
+한 줄에 하나씩, 증가하는 순서대로 소수를 출력한다.
+
+2) 유추파악
+정수 M, N 이 주어지고 M과 N 사이의 소수들을 출력한다.
+
+3) 주요 단어 이름 선정
+
+4)테스트 케이스
+<출력>
+3 16
+--> 
+3
+5
+7
+11
+13
+
+5)프로그래밍 순서
+기존에 사용했던 소수구하는 방식은 효율성이 떨어진다.
+에라토스테네스의 체 방식을 참조하여 해결했다.
+*/
+
+public class Main {
+    public static boolean[] check;
+    // 소수를 구하는 함수
+    public static void get_check(){
+                // 소수 = false
+            check[0]=check[1]=true;
+            for(int i=2; i*i<check.length; i++){
+                for(int j= i*i; j<check.length; j+=i){ // i*i 이전값은 이미 배제된다.
+                    if(check[j]==true) continue;
+                    else check[j] = true;
+                }
+            }    
+    }
+        public static void main(String[] args) {     
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int M = Integer.parseInt(st.nextToken());
+            int N = Integer.parseInt(st.nextToken());
+            
+            check = new boolean[N+1];
+
+            get_check();
+
+            for(int i=M; i<N+1; i++){
+                if(check[i]==false) bw.write(i+"\n");
+            }
+            
+            bw.flush();
+            br.close();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
