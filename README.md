@@ -36,7 +36,7 @@
 |기본수학2| 소인수분해 |[java](https://www.acmicpc.net/source/52309844)|[java](https://www.acmicpc.net/source/52310032) | 설명 |
 |기본수학2| 소수구하기 |[java](https://www.acmicpc.net/source/52406661)|[java](https://www.acmicpc.net/source/52406873) | 설명 |
 |기본수학2| 베르트랑공준 |[java](https://www.acmicpc.net/source/52407764)|[java](https://www.acmicpc.net/source/52407936) | 설명 |
+|기본수학2| 골드바흐추측 |[java](https://www.acmicpc.net/source/52448086)|[java](https://www.acmicpc.net/source/52467775) | 설명 |
 
 <!--
-|기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
-|기본수학2| 골드바흐추측 |[java]()|[java]() | 설명 | -->
+|기본수학1| 큰수A+B |[java]()|[java]() | 설명 |-->

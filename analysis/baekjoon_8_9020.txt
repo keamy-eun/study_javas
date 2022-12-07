@@ -1,0 +1,133 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+/* 
+문제
+1보다 큰 자연수 중에서  1과 자기 자신을 제외한 약수가 없는 자연수를 소수라고 한다. 예를 들어, 5는 1과 5를 제외한 약수가 없기 때문에 소수이다. 하지만, 6은 6 = 2 × 3 이기 때문에 소수가 아니다.
+
+골드바흐의 추측은 유명한 정수론의 미해결 문제로, 2보다 큰 모든 짝수는 두 소수의 합으로 나타낼 수 있다는 것이다. 이러한 수를 골드바흐 수라고 한다. 
+또, 짝수를 두 소수의 합으로 나타내는 표현을 그 수의 골드바흐 파티션이라고 한다. 예를 들면, 4 = 2 + 2, 6 = 3 + 3, 8 = 3 + 5, 10 = 5 + 5, 12 = 5 + 7, 14 = 3 + 11, 14 = 7 + 7이다. 
+10000보다 작거나 같은 모든 짝수 n에 대한 골드바흐 파티션은 존재한다.
+
+2보다 큰 짝수 n이 주어졌을 때, n의 골드바흐 파티션을 출력하는 프로그램을 작성하시오. 만약 가능한 n의 골드바흐 파티션이 여러 가지인 경우에는 두 소수의 차이가 가장 작은 것을 출력한다.
+
+입력
+첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고 짝수 n이 주어진다.
+
+출력
+각 테스트 케이스에 대해서 주어진 n의 골드바흐 파티션을 출력한다. 출력하는 소수는 작은 것부터 먼저 출력하며, 공백으로 구분한다.
+
+제한
+4 ≤ n ≤ 10,000
+
+2) 유추파악
+첫줄에 테스트 케이스 T가 주어진다.
+4보다 큰 짝수는 두 소수의 합으로 표현 가능하다. 두 소수를 구하라. (작은 수 먼저 출력)
+두 소수가 여러 케이스인 경우 두 소수의 차가 가장 작은 것을 출력한다.
+T번 반복한다.
+
+3) 주요 단어 이름 선정
+테스트 케이스 T
+입력 정수  N
+첫번째 소수 A
+두번째 소수 B
+소수의 차 gap
+
+4)테스트 케이스
+<출력>
+3
+8
+10
+16
+--> 
+3 5
+5 5
+5 11
+
+5)프로그래밍 순서
+10000이하의 소수를 구해 배열에 넣는다 - 테스트 케이스 T 입력 - 
+가장 작은 소수부터 이중for문으로 더해가며 입력한 짝수가 나오는지 확인한다. 합이 입력한 수를 넘어가면 break
+두 소수를 구하면 A와B에 저장하고 두수의 차도 gap에 입력한다.
+다음 구한 두 소수의 겝이 이전 gap보다 작다면 A와B, gap 을 갱신한다.
+for문이 끝나면 출력.
+*/
+
+public class Main {
+
+        public static void main(String[] args) {     
+            br = new BufferedReader(new InputStreamReader(System.in));
+            bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            Main main = new Main();
+            
+            // 0~10000 크기의 배열
+            check = new boolean[10001];
+            
+            //배열에 소수를 구별하는 함수
+            fun_num();
+
+            //소수만 담긴 새로운 배열을 만든다
+            arrayList = new ArrayList<Integer>();
+            for(int i=0; i<check.length; i++){
+                if(check[i]==false) arrayList.add(i);   
+            }
+
+            int T = Integer.parseInt(br.readLine());
+
+            // 두 소수를 조합하여 합을 구하는 함수
+            main.sum(T);
+
+            br.close();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static ArrayList<Integer> arrayList;
+    public static boolean[] check;
+    public static BufferedReader br;
+    public static BufferedWriter bw ;
+    
+    public void sum(int T) throws NumberFormatException, IOException{
+        for(int k = 0; k<T; k++){  //T번 수행
+            int N = Integer.parseInt(br.readLine());
+            int A =0;
+            int B =0;
+            int gap = 10000;
+            for(int i=0; i<arrayList.size(); i++){
+                if(arrayList.get(i)>N) break; // 한 소수가 정수보다 크면 break
+                for(int j=i; j<arrayList.size(); j++){
+                    if(arrayList.get(i)+arrayList.get(j)>N)break; // 소수 합이 정수보다 크면 break
+                    if(arrayList.get(i)+arrayList.get(j)==N &&  //소수의 합이 정수이고
+                    arrayList.get(j)-arrayList.get(i)<gap) { //gap이 더 작으면
+                        A = arrayList.get(i);
+                        B = arrayList.get(j);
+                        gap = B-A;
+                    }
+                }
+            }
+            bw.write(A+" "+B+"\n");
+            bw.flush();
+        }
+        
+    }
+
+    public static void fun_num(){
+        // 소수 = false
+        check[0]=check[1]=true;
+        //소수를 구별한다.
+        for(int i=2; i*i<check.length; i++){
+            for(int j= i*i; j<check.length; j+=i){ // i*i 이전값은 이미 배제된다.
+                if(check[j]==true) continue;
+                else check[j] = true;
+            }
+        } 
+    }
+    
+}
