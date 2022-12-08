@@ -5,14 +5,14 @@
 |사칙연산| 덧셈 |[java](https://www.acmicpc.net/source/51272621)|[java](https://www.acmicpc.net/source/51273279) | 설명 |
 |반복문| 곱샘 |[java](https://www.acmicpc.net/source/51274939)|[java](https://www.acmicpc.net/source/51275122) | 설명 |
 |반복문| 덧셈(Buffered) |[java](https://www.acmicpc.net/source/51321330)|[java](https://www.acmicpc.net/source/51378962) | 설명 |
-|반복문| A+B-5 |[java](https://www.acmicpc.net/source/51404603)| | 설명 |
-|1차원 배열| 개수 세기 |[java](https://www.acmicpc.net/source/51493582)| | 설명 |
-|1차원 배열| 인덱스값 찾기 |[java](https://www.acmicpc.net/source/51505059)| | 설명 |
-|1차원 배열| 나머지 갯수 |[java](https://www.acmicpc.net/source/51509011)| | 설명 |
-|1차원 배열| 평균 |[java](https://www.acmicpc.net/source/51629699)| | 설명 |
-|1차원 배열| OX퀴즈 |[java](https://www.acmicpc.net/source/51646657)| | 설명 |
-|1차원 배열| 평균은 넘겠지 |[java](https://www.acmicpc.net/source/51652942)| | 설명 |
-|함수| 셀프넘버 |[java](https://www.acmicpc.net/source/51765711)| | 설명 |
+|반복문| A+B-5 |[java](https://www.acmicpc.net/source/51404603)|[java](https://www.acmicpc.net/source/52500121) | 설명 |
+|1차원 배열| 개수 세기 |[java](https://www.acmicpc.net/source/51493582)|[java](https://www.acmicpc.net/source/52500348) | 설명 |
+|1차원 배열| 과제안내신분 |[java](https://www.acmicpc.net/source/51505059)|[java](https://www.acmicpc.net/source/52500532) | 설명 |
+|1차원 배열| 나머지 갯수 |[java](https://www.acmicpc.net/source/51509011)|[java](https://www.acmicpc.net/source/52500728) | 설명 |
+|1차원 배열| 평균 |[java](https://www.acmicpc.net/source/51629699)|[java](https://www.acmicpc.net/source/52501241) | 설명 |
+|1차원 배열| OX퀴즈 |[java](https://www.acmicpc.net/source/51646657)|[java](https://www.acmicpc.net/source/52501325) | 설명 |
+|1차원 배열| 평균은 넘겠지 |[java](https://www.acmicpc.net/source/51652942)|[java](https://www.acmicpc.net/source/52501431) | 설명 |
+|함수| 셀프넘버 |[java](https://www.acmicpc.net/source/51765711)|[java](https://www.acmicpc.net/source/52501551) | 설명 |
 |함수| 한수 |[java](https://www.acmicpc.net/source/51780704)|[java](https://www.acmicpc.net/source/51780576) | 설명 |
 |문자열| 아스키코드 |[java](https://www.acmicpc.net/source/51798621)|[java](https://www.acmicpc.net/source/51798670) | 설명 |
 |문자열| 숫자의합 |[java](https://www.acmicpc.net/source/51852562)|[java](https://www.acmicpc.net/source/51852853) | 설명 |
