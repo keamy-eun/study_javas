@@ -1,85 +1,137 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /* 
-1) 문제파악 
 문제
-셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
-양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), ...과 같은 무한 수열을 만들 수 있다. 
-예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. 이런식으로 다음과 같은 수열을 만들 수 있다.
-33, 39, 51, 57, 69, 84, 96, 111, 114, 120, 123, 129, 141, ...
-n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자, 51은 57의 생성자이다. 생성자가 한 개보다 많은 경우도 있다. 예를 들어, 101은 생성자가 2개(91과 100) 있다. 
-생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97
-10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
+수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.
+
+산술평균 : N개의 수들의 합을 N으로 나눈 값
+중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값
+최빈값 : N개의 수들 중 가장 많이 나타나는 값
+범위 : N개의 수들 중 최댓값과 최솟값의 차이
+N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.
+
 입력
-입력은 없다.
+첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 
+그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.
+
 출력
-10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.
+첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.
+
+둘째 줄에는 중앙값을 출력한다.
+
+셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.
+
+넷째 줄에는 범위를 출력한다.
 
 2) 유추파악
+첫째줄에 홀수 N이 입력된다. 둘째줄부터 정수가 한줄씩 N번 입력된다
+첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.
+둘째 줄에는 중앙값을 출력한다.
+셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.
+넷째 줄에는 범위를 출력한다.
 
 3) 주요 단어 이름 선정
+홀수 입력 갯수 : N
+산술평균 : data1
+중앙값 : data2
+최빈값 : data3
+범위 : data4
 
 4)테스트 케이스
 <출력>
+5
 1
 3
+8
+-2
+2
+-->
+2
+2
+1
+10
+
+1
+4000
+-->
+4000
+4000
+4000
+0
+
 5
-7
-9
-20
-31
-42
-53
-64
- |
- |       <-- a lot more numbers
- |
-9903
-9914
-9925
-9927
-9938
-9949
-9960
-9971
-9982
-9993
+-1
+-2
+-3
+-1
+-2
+-->
+-2
+-2
+-1
+2
+
+3
+0
+0
+-1
+-->
+0
+0
+0
+1
 
 5)프로그래밍 순서
-
+첫째줄에 홀수 N이 입력 - 둘째줄에 정수를 한줄씩 N번 입력
+data1 = for문으로 (N개의 정수들의 합)/N 
+data2 = 데이터 크기대로 오름정렬했을때 중간에 있는 값
+data3 = 가장 많이 입력된 데이터 값 출력
+data4 = 최대값 - 최소값 출력. 음수일 경우 확인하여 계산.
 */
 
+// 산술평균 : N개의 수들의 합을 N으로 나눈 값. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.
+// 중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값
+// 최빈값 : N개의 수들 중 가장 많이 나타나는 값. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.
+// 범위 : N개의 수들 중 최댓값과 최솟값의 차이
+// N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.
+
 public class Main {
-    static ArrayList<Integer> arrayList;
-    // 셀프넘버 생성 함수
-    public void fun(){
-        for(int i=1; i<10001; i++){
-            int num1 = i/1000%10;
-            int num2 = i/100%10;
-            int num3 = i/10%10;
-            int num4 = i%10;
-            //각 자리수 합
-            int sum = i+num1+num2+num3+num4;
-            if(arrayList.contains(sum)) {
-                arrayList.remove(Integer.valueOf(sum));
-            }
-        }
-    }
-    public static void main(String[] args) {     
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
-            arrayList = new ArrayList<>();
-            for(int i=1; i<10001; i++) arrayList.add(i);  //1~9999 배열 생성
-
-            Main main = new Main();
-            main.fun();
-
-            for(int i=0; i<arrayList.size(); i++){
-                System.out.println(arrayList.get(i));
+            int T = Integer.parseInt(br.readLine());
+            ArrayList<Integer> list = new ArrayList<>();
+            double sum = 0; //ArrayList 값들의 합 --> 평균에 사용
+            for(int i =0; i<T; i++){
+                int num = Integer.parseInt(br.readLine());
+                list.add(num);
+                sum += num;
             }
-        } catch (Exception e) {
+            bw.write(Math.round(sum/T)+"\n"); // 산술평균 출력
+
+            Collections.sort(list);
+            bw.write(list.get(T/2)+"\n");  // 중앙값 출력 . 시간 초과시 CountingArray 시도
+
+            
+
+
+
+
+            // bw.write(sum/T+"\n");
+            bw.flush();
+            br.close();
+            bw.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
-    }
+	}
 }
