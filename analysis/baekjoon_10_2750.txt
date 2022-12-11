@@ -1,0 +1,88 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제파악 
+문제
+N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 
+이 수는 절댓값이 1,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.
+
+출력
+첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+
+입력
+첫째 줄에 색종이의 수가 주어진다. 이어 둘째 줄부터 한 줄에 하나씩 색종이를 붙인 위치가 주어진다. 
+색종이를 붙인 위치는 두 개의 자연수로 주어지는데 첫 번째 자연수는 색종이의 왼쪽 변과 도화지의 왼쪽 변 사이의 거리이고, 
+두 번째 자연수는 색종이의 아래쪽 변과 도화지의 아래쪽 변 사이의 거리이다. 색종이의 수는 100 이하이며, 색종이가 도화지 밖으로 나가는 경우는 없다
+
+출력
+첫째 줄에 색종이가 붙은 검은 영역의 넓이를 출력한다.
+2) 유추파악
+첫줄에 테스트 케이스 갯수 T가 주어지고 중복되지 않는 정수를 한줄씩 T번 입력한다.
+이를 다시 오름차순으로 한줄씩 출력하라
+
+3) 주요 단어 이름 선정
+
+
+4)테스트 케이스
+<출력>
+5
+5
+2
+3
+4
+1
+-->
+1
+2
+3
+4
+5
+
+5)프로그래밍 순서
+테스트케이스 T 입력 - for문 T번 정수 입력 & ArrayList에 입력 - 오른차순 변경 - for문으로 한줄씩 출력
+*/
+
+public class Main {
+    static ArrayList<Integer> arraylist;
+    static BufferedWriter bw;
+
+    //ArrayList를 오름차순으로 정렬하고 한줄씩 출력하는 함수
+    static void sort_list() throws IOException{
+        Collections.sort(arraylist);
+
+        for(int i=0; i<arraylist.size(); i++){
+            bw.write(arraylist.get(i)+"\n");
+            bw.flush();
+        }
+    }
+	public static void main(String[] args) {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            arraylist = new ArrayList<>();
+
+            int T = Integer.parseInt(br.readLine());
+            for(int i=0; i<T; i++){
+                arraylist.add(Integer.parseInt(br.readLine()));
+            }
+            sort_list();
+
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+}

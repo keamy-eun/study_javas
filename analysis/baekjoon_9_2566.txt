@@ -1,0 +1,103 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제파악 
+문제
+<그림 1>과 같이 9×9 격자판에 쓰여진 81개의 자연수 또는 0이 주어질 때, 이들 중 최댓값을 찾고 그 최댓값이 몇 행 몇 열에 위치한 수인지 구하는 프로그램을 작성하시오.
+
+예를 들어, 다음과 같이 81개의 수가 주어지면
+
+ 	1열	2열	3열	4열	5열	6열	7열	8열	9열
+1행	3	23	85	34	17	74	25	52	65
+2행	10	7	39	42	88	52	14	72	63
+3행	87	42	18	78	53	45	18	84	53
+4행	34	28	64	85	12	16	75	36	55
+5행	21	77	45	35	28	75	90	76	1
+6행	25	87	65	15	28	11	37	28	74
+7행	65	27	75	41	7	89	78	64	39
+8행	47	47	70	45	23	65	3	41	44
+9행	87	13	82	38	31	12	29	29	80
+이들 중 최댓값은 90이고, 이 값은 5행 7열에 위치한다.
+
+입력
+첫째 줄부터 아홉 번째 줄까지 한 줄에 아홉 개씩 수가 주어진다. 주어지는 수는 100보다 작은 자연수 또는 0이다.
+
+출력
+첫째 줄에 최댓값을 출력하고, 둘째 줄에 최댓값이 위치한 행 번호와 열 번호를 빈칸을 사이에 두고 차례로 출력한다. 최댓값이 두 개 이상인 경우 그 중 한 곳의 위치를 출력한다.
+
+2) 유추파악
+9 x 9 행렬을 한줄씩 입력하고 최대값과 최대값의 행,열을 출렬하라
+
+3) 주요 단어 이름 선정
+9x9행열 : matrix
+최대값 : max
+최대값 행열 : max_row_col
+
+4)테스트 케이스
+<출력>
+3 23 85 34 17 74 25 52 65
+10 7 39 42 88 52 14 72 63
+87 42 18 78 53 45 18 84 53
+34 28 64 85 12 16 75 36 55
+21 77 45 35 28 75 90 76 1
+25 87 65 15 28 11 37 28 74
+65 27 75 41 7 89 78 64 39
+47 47 70 45 23 65 3 41 44
+87 13 82 38 31 12 29 29 80
+-->
+90
+5 7
+
+5)프로그래밍 순서
+9 x 9 행렬을 StringTokenizer로 입력 받아 이차원 배열에 한줄씩 입력한다.
+입력과 동시에 최대값 max를 넘을 경우 max와 max의 행,열을 저장한다.
+마지막으로 남은 max와 max의 행,열을 출력한다.
+
+*/
+
+public class Main {
+    static int[][] matrix;
+    static int max;
+    static String max_row_col;
+    private static BufferedWriter bw;
+    private static BufferedReader br;
+    // 행열 최대값과 최대값의 행,열을 출력하는 함수
+    static void print() throws IOException{
+        for(int i=0; i<9; i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for(int j=0; j<9; j++){
+                matrix[i][j] = Integer.parseInt(st.nextToken());
+                if(matrix[i][j]>=max) {
+                    max = matrix[i][j];
+                    max_row_col = (i+1)+" "+(j+1); 
+                }
+            }
+        }
+        bw.write(max+"\n"+max_row_col);
+    }
+
+    public static void main(String[] args) {   
+        br = new BufferedReader(new InputStreamReader(System.in));
+        bw = new BufferedWriter(new OutputStreamWriter(System.out));  
+
+        try {
+            matrix = new int[9][9]; // 9x9 행열 생성
+            max=0;
+            max_row_col ="";
+
+            print();
+            
+            bw.flush();
+            br.close();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+}

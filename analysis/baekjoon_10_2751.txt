@@ -1,0 +1,77 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+
+/* 
+문제
+N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 
+이 수는 절댓값이 1,000,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.
+
+출력
+첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+
+2) 유추파악
+첫줄에 테스트 케이스 갯수 T가 주어지고 둘쨰줄에 정수가 한줄씩 T번 입력한다.
+주어진 정수들을 다시 오름차순으로 한줄씩 출력하라
+3) 주요 단어 이름 선정
+테스트 케이스 갯수 : T
+
+4)테스트 케이스
+<출력>
+5
+5
+4
+3
+2
+1
+-->
+1
+2
+3
+4
+5
+
+5)프로그래밍 순서
+첫줄에 정수 T 입력 - 둘째줄에 for문으로 T번 정수 입력 & ArrayList에 저장 -
+Collections.sort로 오름차순 후 출력
+*/
+
+public class Main {
+    static BufferedWriter bw;
+    static ArrayList<Integer> arraylist;
+    // ArrayList의 값들을 오름차순으로 정렬시키고 출력하는 함수
+    static void print() throws IOException{
+        Collections.sort(arraylist);
+
+        for(int i=0; i<arraylist.size(); i++){
+            bw.write(arraylist.get(i)+"\n");
+        }
+    }
+
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            arraylist = new ArrayList<>();
+            int T = Integer.parseInt(br.readLine());
+            for(int i=0; i<T; i++){
+                arraylist.add(Integer.parseInt(br.readLine()));
+            }
+
+            print();
+            bw.flush();
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+}

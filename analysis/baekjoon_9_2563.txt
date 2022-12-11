@@ -1,0 +1,92 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제파악 
+문제
+가로, 세로의 크기가 각각 100인 정사각형 모양의 흰색 도화지가 있다. 
+이 도화지 위에 가로, 세로의 크기가 각각 10인 정사각형 모양의 검은색 색종이를 색종이의 변과 도화지의 변이 평행하도록 붙인다. 
+이러한 방식으로 색종이를 한 장 또는 여러 장 붙인 후 색종이가 붙은 검은 영역의 넓이를 구하는 프로그램을 작성하시오.
+
+예를 들어 흰색 도화지 위에 세 장의 검은색 색종이를 그림과 같은 모양으로 붙였다면 검은색 영역의 넓이는 260이 된다.
+
+입력
+첫째 줄에 색종이의 수가 주어진다. 이어 둘째 줄부터 한 줄에 하나씩 색종이를 붙인 위치가 주어진다. 
+색종이를 붙인 위치는 두 개의 자연수로 주어지는데 첫 번째 자연수는 색종이의 왼쪽 변과 도화지의 왼쪽 변 사이의 거리이고, 
+두 번째 자연수는 색종이의 아래쪽 변과 도화지의 아래쪽 변 사이의 거리이다. 색종이의 수는 100 이하이며, 색종이가 도화지 밖으로 나가는 경우는 없다
+
+출력
+첫째 줄에 색종이가 붙은 검은 영역의 넓이를 출력한다.
+2) 유추파악
+100x100의 넓이의 사각형 안에 10x10 사각형을 T개 넣고 10x10 사각형이 차지하는 면적을 구하라.
+
+3) 주요 단어 이름 선정
+10x10사각형 갯수 T
+1x1 사각형 갯수 cnt
+
+4)테스트 케이스
+<출력>
+3
+3 7
+15 7
+5 2
+-->
+260
+
+5)프로그래밍 순서
+1x1크기의 사각형이 1000개 들어간다고 가정할 때 몇개의 사각형이 들어가 있는지 확인하면 된다.
+boolean 2차배열을 사용해 사각형이 들어가면 true로 바꾼다. true의 갯수 = cnt.
+cnt를 출력 
+
+*/
+
+public class Main {
+    static boolean[][] block;
+    static int fun(int count, int a, int b){
+        // 1x1크기의 사각형의 위치
+        for(int j=a; j<a+10; j++) {
+            for(int k=b; k<b+10; k++) {
+                if(block[j][k]==false) { // 사각형이 없는 위치이면 사각형 배치
+                    block[j][k] = true;
+                    count ++;
+                } else continue;
+                }
+            }
+            return count;
+    }
+
+	public static void main(String[] args) {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		block = new boolean[100][100]; // 1x1크기의 사각형이 1000개 들어가는 공간
+
+			try {
+				// 1x1크기의 사각형으로 이뤄진 10x10 정사각형의 갯수
+				int T = Integer.parseInt(br.readLine());
+				int cnt = 0;  // 1x1 사각형의 총 갯수
+				for(int i=0; i<T; i++) {
+					StringTokenizer st;
+					
+                    st = new StringTokenizer(br.readLine());
+                    
+                    // 정사각형 위치
+                    int a = Integer.parseInt(st.nextToken());
+                    int b = Integer.parseInt(st.nextToken());
+                    cnt = fun(cnt, a, b);
+
+                    }
+				bw.write(cnt+"\n");
+				bw.flush();
+				br.close();
+				bw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+}

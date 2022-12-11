@@ -37,6 +37,19 @@
 |기본수학2| 소수구하기 |[java](https://www.acmicpc.net/source/52406661)|[java](https://www.acmicpc.net/source/52406873) | 설명 |
 |기본수학2| 베르트랑공준 |[java](https://www.acmicpc.net/source/52407764)|[java](https://www.acmicpc.net/source/52407936) | 설명 |
 |기본수학2| 골드바흐추측 |[java](https://www.acmicpc.net/source/52448086)|[java](https://www.acmicpc.net/source/52467775) | 설명 |
+|2차원 배열| 행렬 덧셈 |[java](https://www.acmicpc.net/source/52523924)|[java](https://www.acmicpc.net/source/52524131) | 설명 |
+|2차원 배열| 최대값 |[java](https://www.acmicpc.net/source/52524971)|[java](https://www.acmicpc.net/source/52525046) | 설명 |
+|2차원 배열| 색종이 |[java](https://www.acmicpc.net/source/52533055)|[java](https://www.acmicpc.net/source/52541001) | 설명 |
+|정렬| 수 정렬하기 |[java](https://www.acmicpc.net/source/52541415)|[java](https://www.acmicpc.net/source/52541514) | 설명 |
+|정렬| 대표값2 |[java](https://www.acmicpc.net/source/52542023)|[java](https://www.acmicpc.net/source/52542123) | 설명 |
+|정렬| 커트라인 |[java](https://www.acmicpc.net/source/52544783)|[java](https://www.acmicpc.net/source/52544909) | 설명 |
+|정렬| 수 정렬하기2 |[java](https://www.acmicpc.net/source/52545100)|[java](https://www.acmicpc.net/source/52545212) | 설명 |
+|정렬| 수 정렬하기3 |[java](https://www.acmicpc.net/source/52558871)|[java](https://www.acmicpc.net/source/52558965) | 설명 |
 
 <!--
-|기본수학1| 큰수A+B |[java]()|[java]() | 설명 |-->
+|기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
+
+|정렬| 통계학 |[java]()|[java]() | 설명 |
+|정렬| 소트인사이드 |[java]()|[java]() | 설명 |
+|정렬| 좌표 정렬하기 |[java]()|[java]() | 설명 |
+|정렬| 좌표 정렬하기2 |[java]()|[java]() | 설명 |-->
