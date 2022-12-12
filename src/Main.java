@@ -121,8 +121,9 @@ public class Main {
             Collections.sort(list);
             bw.write(list.get(T/2)+"\n");  // 중앙값 출력 . 시간 초과시 CountingArray 시도
 
-            
 
+            
+            bw.write("\n");
 
 
 
