@@ -1,21 +1,35 @@
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class prac {
-    public static void main(String[] args) {
-        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
-        map.put(1, 2);
-        map.put(-1, 2);
-        map.put(-11, 2);
-        map.put(-111, 2);
-        map.put(-21, 2);
-        map.put(12, 2);
-        map.put(18, 2);
+public class Prac {
+    
+        public HashMap<String, String> getSearchformData(){
+            HashMap<String, String> searchForm = new HashMap<String, String>();
+            searchForm.put("search_key","Search Title");
+            searchForm.put("name","은원기");
+            searchForm.put("id","ID0001");
+            return searchForm;
+        }
 
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ":" + entry.getValue());
-          }
-    }
+
+        public ArrayList<String> getTablesListWithString(){
+            ArrayList<String> tablesListWithString = new ArrayList<>();
+            tablesListWithString.add("@mdo");
+            tablesListWithString.add("@fat");
+            tablesListWithString.add("@twitter");
+            return tablesListWithString;
+        }
+
+        public HashMap<String, Object> getBundlesData(){
+            Prac datasInfo = new Prac();
+            HashMap<String, String> map = datasInfo.getSearchformData();
+            ArrayList<String> list = datasInfo.getTablesListWithString();
+
+            HashMap<String, Object> bundlesData = new HashMap<>();
+            bundlesData.put("searchForm", map);
+            bundlesData.put("tablesListWithString", list);
+            return bundlesData;
+        }
     
 }
+
