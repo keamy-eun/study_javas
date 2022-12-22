@@ -1,35 +1,11 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.StringTokenizer;
 
 public class Prac {
-    
-        public HashMap<String, String> getSearchformData(){
-            HashMap<String, String> searchForm = new HashMap<String, String>();
-            searchForm.put("search_key","Search Title");
-            searchForm.put("name","은원기");
-            searchForm.put("id","ID0001");
-            return searchForm;
+    public static void main(String[] args) {
+        String str = "전혀 아니다. 아니다. 보통이다.";
+        StringTokenizer st = new StringTokenizer(str," ");
+        while(st.hasMoreTokens()){
+            System.out.println(st.nextToken());
         }
-
-
-        public ArrayList<String> getTablesListWithString(){
-            ArrayList<String> tablesListWithString = new ArrayList<>();
-            tablesListWithString.add("@mdo");
-            tablesListWithString.add("@fat");
-            tablesListWithString.add("@twitter");
-            return tablesListWithString;
-        }
-
-        public HashMap<String, Object> getBundlesData(){
-            Prac datasInfo = new Prac();
-            HashMap<String, String> map = datasInfo.getSearchformData();
-            ArrayList<String> list = datasInfo.getTablesListWithString();
-
-            HashMap<String, Object> bundlesData = new HashMap<>();
-            bundlesData.put("searchForm", map);
-            bundlesData.put("tablesListWithString", list);
-            return bundlesData;
-        }
-    
+    }
 }
-

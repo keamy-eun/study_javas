@@ -1,0 +1,102 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제
+2차원 평면 위의 점 N개가 주어진다. 좌표를 x좌표가 증가하는 순으로, x좌표가 같으면 y좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.
+
+출력
+첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
+
+
+2) 유추파악
+첫 줄에 정수 N이 주어지고 둘째줄부터 정수 x, y가 공백을 구분자로 N줄 입력된다.
+x의 오름차순으로 한줄씩 출력된다.
+x가 중복일땐 y의 오름차순으로 출력된다.
+
+3) 주요 단어 이름 선정
+
+
+4)테스트 케이스
+<출력>
+5
+3 4
+1 1
+1 -1
+2 2
+3 3
+-->
+1 -1
+1 1
+2 2
+3 3
+3 4
+
+5)프로그래밍 순서
+정수 N 입력 - ArrayList 이중배열 만들어서 x값을 저장하는 인스턴스 200001 범위만큼 생성
+(boolean[][] xyList = new boolean[200001][200001]; 을 사용했을때는 메모리 초과가 나온다.)
+for문(i<N)에 StringTokenizer로  ArrayList의 x인덱스의 y값 저장 -
+ArrayList의 size가 1 이상일 때만 조건으로 하여 -100000부터 100000까지의 값 출력
+
+*/
+
+public class Main {
+
+    static ArrayList<Integer>[] arraylist;
+    static BufferedReader br;
+    static BufferedWriter bw;
+
+    //정수 N을 넣으면 x,y 좌표를 N번씩 입력받아 크기순서대로 출력해주는 함수
+    static void xyPrint(int N) throws IOException{
+        for(int i=0; i<N; i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            
+            arraylist[x+100000].add(y);
+        }
+
+        for(int i=0; i<200001; i++){
+            if(arraylist[i].size()==0) continue;
+            else{
+                Collections.sort(arraylist[i]);
+                for(int j=0; j<arraylist[i].size(); j++){
+                    bw.write((i-100000)+" "+arraylist[i].get(j)+"\n");
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+		br = new BufferedReader(new InputStreamReader(System.in));
+		bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            // 이중 ArrayList<Integer>[]을 사용한다.
+            int N = Integer.parseInt(br.readLine());
+
+            arraylist = new ArrayList[200001]; //x값은 정해져있고 y값의 크기는 열어둔 배열
+
+            for(int i=0; i<200001; i++){
+                arraylist[i] = new ArrayList<>(); //x좌표 ArrayList 인스턴트 모두 생성
+            }
+            
+            xyPrint(N);
+
+            bw.flush();
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+}

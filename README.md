@@ -47,9 +47,29 @@
 |정렬| 수 정렬하기3 |[java](https://www.acmicpc.net/source/52558871)|[java](https://www.acmicpc.net/source/52558965) | 설명 |
 |정렬| 통계학 |[java](https://www.acmicpc.net/source/52665896)|[java](https://www.acmicpc.net/source/52666404) | 설명 |
 |정렬| 소트인사이드 |[java](https://www.acmicpc.net/source/52684664)|[java](https://www.acmicpc.net/source/52684683) | 설명 |
+|정렬| 좌표 정렬하기 |[java](https://www.acmicpc.net/source/52758052)|[java](https://www.acmicpc.net/source/52758337) | 설명 |
+|정렬| 좌표 정렬하기2 |[java](https://www.acmicpc.net/source/52759903)|[java](https://www.acmicpc.net/source/52759981) | 설명 |
+|정렬| 나이순 정렬 |[java](https://www.acmicpc.net/source/52779715)|[java](https://www.acmicpc.net/source/52779751) | 설명 |
+|정렬| 좌표 압축 |[java](https://www.acmicpc.net/source/52835502)|[java](https://www.acmicpc.net/source/52835851) | 설명 |
+-->
 
 <!--
 |기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
-
-|정렬| 좌표 정렬하기 |[java]()|[java]() | 설명 |
-|정렬| 좌표 정렬하기2 |[java]()|[java]() | 설명 |-->
+|정렬| 단어 정렬 |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
+||  |[java]()|[java]() | 설명 |
