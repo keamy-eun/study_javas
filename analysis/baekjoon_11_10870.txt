@@ -1,0 +1,61 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+/* 
+1) 문제파악 
+문제
+
+피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다.
+이를 식으로 써보면 Fn = Fn-1 + Fn-2 (n ≥ 2)가 된다.
+n=17일때 까지 피보나치 수를 써보면 다음과 같다.
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597
+n이 주어졌을 때, n번째 피보나치 수를 구하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 n이 주어진다. n은 20보다 작거나 같은 자연수 또는 0이다.
+
+출력
+첫째 줄에 n번째 피보나치 수를 출력한다.
+
+2) 유추파악
+정수 N이 주어지고 피보나치 수열 N번째 항을 구하라
+
+3) 주요 단어 이름 선정
+
+4)테스트 케이스
+10
+-->
+55
+
+5)프로그래밍 순서
+정수 N 입력 - 함수에 파라메터로 정수 N을 입력했을때 파라메터 N-1과 파라메터 N-2를 가지는 함수를 합한 결과를 리턴
+
+*/
+
+public class Main {
+	static int fun(int N) {
+		if(N<=1) return N;
+		return fun(N-1)+fun(N-2);
+	}
+	
+	public static void main(String[] args) {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+		try {
+			int N = Integer.parseInt(br.readLine());	
+			
+			bw.write(fun(N)+"\n");
+			bw.flush();
+			br.close();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

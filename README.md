@@ -52,12 +52,16 @@
 |정렬| 단어 정렬 |[java](https://www.acmicpc.net/source/52976927)|[java](https://www.acmicpc.net/source/52977125) | 설명 |
 |정렬| 나이순 정렬 |[java](https://www.acmicpc.net/source/52779715)|[java](https://www.acmicpc.net/source/52779751) | 설명 |
 |정렬| 좌표 압축 |[java](https://www.acmicpc.net/source/52835502)|[java](https://www.acmicpc.net/source/52835851) | 설명 |
+|재귀| 팩토리얼 ||[java](https://www.acmicpc.net/source/52998098) | 설명 |
+|재귀| 피보나치 수 5 ||[java](https://www.acmicpc.net/source/53011255) | 설명 |
+|브루트 포스| 블랙잭 |[java](https://www.acmicpc.net/source/53063213)|[java](https://www.acmicpc.net/source/53063388) | 설명 |
 
 <!--
 |기본수학1| 큰수A+B |[java]()|[java]() | 설명 |
-||  |[java]()|[java]() | 설명 |
-||  |[java]()|[java]() | 설명 |
-||  |[java]()|[java]() | 설명 |
+|재귀| 재귀의 귀재 |[java]()|[java]() | 설명 |
+|재귀| 알고리즘 수업-병합 정렬 1 |[java]()|[java]() | 설명 |
+|재귀| 별 찍기 -10 |[java]()|[java]() | 설명 |
+|재귀| 하노이 탑 이동 순서 |[java]()|[java]() | 설명 |
 ||  |[java]()|[java]() | 설명 |
 ||  |[java]()|[java]() | 설명 |
 ||  |[java]()|[java]() | 설명 |
