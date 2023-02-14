@@ -17,6 +17,10 @@ public class ConvertJsonWithGson {
         // 문자열 Json -> Bean(bean, model, vo) Gson
         String jsonStrBean = "{firstName:wonki, secondName:eun, handleName:keamy}";
         MemberBean memberBean = gson.fromJson(jsonStrBean, MemberBean.class);
+        
+        // Bean(bean, model, vo) Gson -> 문자열 Json
+        String memeberBeanStr = gson.toJson(memberBean);
+        
         int i = 0;
     }
 }

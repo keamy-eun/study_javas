@@ -11,6 +11,9 @@ public class MemberBean {
         this.handleName = handleName;
     }
 
+    public MemberBean() {
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
